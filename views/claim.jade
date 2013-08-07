@@ -1,0 +1,29 @@
+doctype 5
+html
+    head
+        title Distributed Practicing System - Project #{project}
+    body
+        h1 Distributed Practicing System - Project #{project}
+        -if (typeof data != 'undefined')
+            -if (typeof data.pending != 'undefined')
+                #pending
+                    h2 pending
+                    -for (var i = 0; i < data.pending.length; i++)
+                        -item = data.pending[i]
+                        p
+                            a(href='/practice?' + 'project=' + project + '&group=' + item) #{item}
+            -if (typeof data.claimed != 'undefined')
+                #practicing
+                    h2 practicing
+                    -for (var i = 0; i < data.claimed.length; i++)
+                        -item = data.claimed[i]
+                        p
+                            p #{item}
+            -if (typeof data.results != 'undefined')
+                #finished
+                    h2 finished
+                    -for (var i = 0; i < data.results.length; i++)
+                        -item = data.results[i]
+                        p
+                            p #{item}
+

@@ -3,7 +3,8 @@
  */
 
 var express = require('express')
-	, http = require('http');
+	, http = require('http')
+    , path = require('path');
 var routes = require('./routes');
 
 var app = express();
@@ -14,6 +15,7 @@ app.configure(function() {
     app.set('view engine', 'jade');
     app.use(express.bodyParser());
     app.use(app.router);
+    app.use(express.static(path.join(__dirname, 'public')));
 });
 
 app.configure('development', function() {
@@ -27,4 +29,6 @@ http.createServer(app).listen(app.get('port'), function(){
 app.get('/', routes.index.get);
 app.get('/practice', routes.practice.get);
 app.post('/practice', routes.practice.post);
+app.get('/claim', routes.claim.get);
 app.get('/thankyou', routes.thankyou.get);
+app.get('/error', routes.errorpage.get);

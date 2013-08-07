@@ -1,19 +1,24 @@
 doctype 5
 html
     head
-        title #{project}:#{group}
+        title Distributed Practicing System - Project #{project}:#{group}
+        script(type="text/javascript", src='js/jquery-1.9.1.js')
+        script(type="text/javascript", src='js/practice.js')
+        link(rel="stylesheet", href="stylesheets/practice.css")
     body
         -if (typeof description == 'undefined')
-            -description = "Please check on invalid items"
-        h1 #{description}
+            -description = "Please put a check mark on valid items"
+        h1 Distributed Practicing System - Project #{project}:#{group}
+        h2 #{description}
         form(action="/practice/?" + "project=" + project + "&group=" + group, method="post")
-            label Your name
-            input(type="edit", name="name")
+            label your name
+            input(type="edit", name="name", value="yourname")
             -if (data)
                 -len = data.length
                 -for (var i = 0; i < len; i++)
                     -item = data[i]
-                    p
-                        label #{item}
-                        input(type="checkbox", name="result", value=item, checked)
-            input(type="submit")
+                    div.item(for="c" + i)
+                        input(id="c" + i, type="checkbox", name="result", value=item, checked) #{item}
+                        label(for="c" + i, style="font-size: 40px; padding-right: 80%") #{item}
+            input.submit(type="submit", name="submit", value="submit")
+            input.submit(type="submit", name="cancel", value="cancel")

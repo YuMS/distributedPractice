@@ -1,0 +1,14 @@
+.item {
+    border: 1px double rgba(0, 0, 0, 0);
+    font-size: 35pt;
+    cursor: pointer;
+}
+
+.item:hover {
+    border: 1px double rgba(0, 0, 200, 0.1);
+}
+
+.item:active {
+    border: 1px double rgba(0, 0, 200, 0.5);
+    background-color: rgba(0, 0, 200, 0.2);
+}

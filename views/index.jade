@@ -1,11 +1,12 @@
 doctype 5
 html
     head
-        title Distributed practice - Project #{project}
+        title Distributed Practicing System - TouchPal
     body
-        h1 Distributed practice - Project #{project}
-        -if (typeof data != 'undefined')
-            -for (var i = 0; i < data.length; i++)
-                -item = data[i]
+        h1 Distributed Practicing System - Touchpal
+        h2 Please select a project
+        -if (typeof projects != 'undefined')
+            -for (var i = 0; i < projects.length; i++)
+                -project = projects[i]
                 p
-                    a(href='/practice?' + 'project=' + project + '&group=' + item) #{item}
+                    a(href='/claim?' + 'project=' + project) #{project}
