@@ -1,0 +1,19 @@
+doctype 5
+html
+    head
+        title #{project}:#{group}
+    body
+        -if (typeof description == 'undefined')
+            -description = "Please check on invalid items"
+        h1 #{description}
+        form(action="/practice/?" + "project=" + project + "&group=" + group, method="post")
+            label Your name
+            input(type="edit", name="name")
+            -if (data)
+                -len = data.length
+                -for (var i = 0; i < len; i++)
+                    -item = data[i]
+                    p
+                        label #{item}
+                        input(type="checkbox", name="result", value=item, checked)
+            input(type="submit")

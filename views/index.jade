@@ -1,0 +1,11 @@
+doctype 5
+html
+    head
+        title Distributed practice - Project #{project}
+    body
+        h1 Distributed practice - Project #{project}
+        -if (typeof data != 'undefined')
+            -for (var i = 0; i < data.length; i++)
+                -item = data[i]
+                p
+                    a(href='/practice?' + 'project=' + project + '&group=' + item) #{item}
